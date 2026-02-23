@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-primary: #D90102;
+  --color-primary-hover: #D90102;
+
+  --color-secondary: #2563eb;
+  --color-text: #010101;
+  --color-muted: #6b7280;
+  --color-background: #ffffff;
+}
+
+@font-face {
+  font-family: 'Canela Text';
+  src: url('/fonts/canela-text/CanelaText-Thin.woff2') format('woff2'),
+       url('/fonts/canela-text/CanelaText-Light.woff2') format('woff2'),
+       url('/fonts/canela-text/CanelaText-Regular.woff2') format('woff2');
+  font-weight: 100 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela Text';
+  src: url('/fonts/canela-text/CanelaText-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela Text';
+  src: url('/fonts/canela-text/CanelaText-Bold.woff2') format('woff2'),
+       url('/fonts/canela-text/CanelaText-Black.woff2') format('woff2');
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+* {
+  font-family: 'Canela Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.mission-shape {
+  clip-path: polygon(
+    0 0,
+    88% 0,
+    100% 0,
+    80% 100%,
+    0% 100%
+  );
+
+  border-radius: 26px;
+  overflow: hidden;
+}
