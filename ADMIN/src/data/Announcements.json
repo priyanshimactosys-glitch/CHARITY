@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Upcoming Community Event",
+    "date": "Cobcos al May 9",
+    "role": "Volunteers & Staff",
+    "status": "Екранже борт"
+  },
+  {
+    "id": 2,
+    "title": "Blood Donation Camp",
+    "date": "June 15, 2026",
+    "role": "All Members",
+    "status": "Екранже борт"
+  },
+  {
+    "id": 3,
+    "title": "Tree Plantation Drive",
+    "date": "July 10, 2026",
+    "role": "Volunteers",
+    "status": "Екранже борт"
+  },
+  {
+    "id": 4,
+    "title": "Annual Meetup",
+    "date": "August 5, 2026",
+    "role": "Staff Members",
+    "status": "Екранже борт"
+  }
+]

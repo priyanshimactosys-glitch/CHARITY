@@ -1,0 +1,16 @@
+{
+  "title": "People Management",
+  "tabs": [
+    { "id": 1, "label": "Volunteers" },
+    { "id": 2, "label": "Staff" },
+    { "id": 3, "label": "Applications" }
+  ],
+  "stats": [
+    { "id": 101, "count": 129, "label": "Volunteers" },
+    { "id": 102, "count": 4, "label": "Total Staff" }
+  ],
+  "cta": {
+    "count": 2,
+    "label": "Job Applications"
+  }
+}
