@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AdminLayout } from "./components/layout/AdminLayout";
-import DashboardOverview from "./components/pages/admin/DashboardOverview";
-import VolunteerManagement from "./components/pages/admin/VolunteerManagement"; 
-
+import Dashboard from "./dashboard/Dashboard"
 
 import { ManageServices } from "./components/pages/admin/Operations/ManageServices";
 import { ManageAppointments } from "./components/pages/admin/Operations/ManageAppointments";
@@ -18,8 +16,7 @@ function App() {
         <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
 
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<DashboardOverview />} />
-          <Route path="volunteers" element={<VolunteerManagement />} />
+          <Route path="dashboard" element={<Dashboard />} />
           {/* Operations routes */}
         <Route path="operations/services" element={<ManageServices />} />
           <Route path="operations/appointments" element={<ManageAppointments />} />
