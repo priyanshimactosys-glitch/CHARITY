@@ -1,8 +1,12 @@
+"use client";
 import Button from "@/src/components/common/Button";
 import Container from "@/src/components/common/Container";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+ const router = useRouter();
+
     return (
         <section className="relative">
 
@@ -17,7 +21,7 @@ export default function Footer() {
         gap-4 z-10
       "
             >
-                <Button variant="secondary" className="px-4 py-3 flex items-center gap-2">
+                <Button onClick={() => router.push("/book-appointment")} variant="secondary" className="px-4 py-3 flex items-center gap-2">
                     <Image
                         src="/images/footer1.png"
                         alt="Book Appointment"
@@ -27,7 +31,7 @@ export default function Footer() {
                     Book Appointment →
                 </Button>
 
-                <Button className="px-6 py-3 flex items-center gap-2">
+                <Button onClick={() => router.push("/contact-us")} className="px-6 py-3 flex items-center gap-2">
                     <Image
                         src="/images/footer2.png"
                         alt="Contact Us"

@@ -64,13 +64,10 @@ export default function StepOne({ next }: Props) {
 
     <div className="bg-[gray-50] ">
 
-      {/* CENTER CONTAINER */}
       <div className="max-w-6xl mx-auto px-4 md:px-6">
 
-        {/* ================= HEADER ================= */}
         <div className="mb-10">
 
-          {/* DIVIDER TITLE */}
           <div className="flex items-center gap-4">
             <div className="flex-1 h-[1px] bg-[#D9D9D9]"></div>
 
@@ -81,7 +78,6 @@ export default function StepOne({ next }: Props) {
             <div className="flex-1 h-[1px] bg-[#D9D9D9]"></div>
           </div>
 
-          {/* INFO TEXT */}
           <div className="flex justify-start mt-4">
             <div className="flex items-center gap-2 text-sm text-gray-700 text-center">
               <Image
@@ -100,7 +96,6 @@ export default function StepOne({ next }: Props) {
 
         </div>
 
-        {/* ================= SERVICES ================= */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
           {services.map((service, index) => (
@@ -121,9 +116,6 @@ export default function StepOne({ next }: Props) {
 
               <div className="flex gap-4 pr-6">
 
-                {/* ICON */}
-
-                {/* TEXT */}
                 <div>
                   <div className="flex items-start gap-2">
                     <Image
@@ -146,7 +138,6 @@ export default function StepOne({ next }: Props) {
 
               </div>
 
-              {/* ✅ CHEVRON BOTTOM RIGHT */}
               <ChevronRight
                 size={20}
                 className="absolute bottom-4 right-4 text-gray-400"
@@ -157,7 +148,6 @@ export default function StepOne({ next }: Props) {
           ))}
         </div>
 
-        {/* ================= INFO BAR ================= */}
         <div className="
           mt-10 bg-green-100 text-green-800
           flex items-start md:items-center
@@ -174,7 +164,6 @@ export default function StepOne({ next }: Props) {
           </span>
         </div>
 
-        {/* ================= BUTTON ================= */}
         <div className="flex justify-center mt-10">
           <button
             disabled={selected === null}

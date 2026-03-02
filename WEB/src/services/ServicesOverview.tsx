@@ -189,7 +189,7 @@ export default function ServicesOverview() {
             Book an Appointment
           </button>
 
-          <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md w-full sm:w-auto">
+          <button onClick={() => router.push("/contact-us")}  className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md w-full sm:w-auto">
             Contact Us
           </button>
         </div>
