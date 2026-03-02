@@ -1,0 +1,17 @@
+{
+  "appointments": {
+    "title": "Appointments",
+    "subtitle": "Upcoming: hours appointments.",
+    "buttonLabel": "Upcoming hours"
+  },
+  "staff": {
+    "title": "Staff",
+    "subtitle": "Staff activity logs will appear here.",
+    "buttonLabel": "View staff logs"
+  },
+  "donations": {
+    "title": "Donations",
+    "subtitle": "Donation records summary.",
+    "buttonLabel": "View donations"
+  }
+}
