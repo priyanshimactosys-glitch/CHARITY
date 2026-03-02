@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "tailwindcss";
 
 @theme {
@@ -53,3 +54,13 @@
     overflow: hidden;
   }
 } 
+=======
+
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #D90102;
+}
+
+
+>>>>>>> 91099f5 (initial commit)
