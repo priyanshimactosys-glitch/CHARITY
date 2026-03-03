@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import logo from '../../assets/icons/logo copy.png';
+import Coupons from '../pages/admin/MarketingEngagement/Coupons';
 
 // Icons Import
 import homeIcon from "../../assets/icons/home.svg"; 
@@ -15,7 +16,8 @@ import settingsIcon from "../../assets/icons/system.svg";
 
 export const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [openDropdown, setOpenDropdown] = useState(''); 
-  
+  const [isCouponOpen, setIsCouponOpen] = useState(false); 
+
   const menus = [
     { name: 'Dashboard', icon: homeIcon, path: '/admin/dashboard', hasDropdown: false },
     { 
@@ -35,7 +37,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
       path: '#', 
       hasDropdown: true,
       subMenus: [
-        { name: 'Users (Staff Account, Volunteers)', path: '/admin/people/users' },
+        { name: 'Users ', path: '/admin/people/users' },
         { name: 'Career/Volunteers', path: '/admin/people/career' }
       ]
     },
@@ -95,7 +97,8 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
   ];
 
-  return (
+  return ( 
+    <> 
    <aside className={`
       fixed inset-y-0 left-0 z-50
       w-72 bg-white border-r border-gray-100 
@@ -130,7 +133,9 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
                     : 'text-gray-700 hover:bg-gray-50'
                   }
                 `}
-              >
+              > 
+
+
                 <div className="flex items-center gap-4">
                   <img 
                     src={m.icon} 
@@ -159,6 +164,12 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <NavLink
                       key={sub.name}
                       to={sub.path}
+                    onClick={(e) => {
+                        if (sub.name === 'Coupons management') {
+                          e.preventDefault(); 
+                          setIsCouponOpen(true); // Ab ye chalega ✅
+                        }
+                      }}
                       className={({ isActive }) => `
                         block py-2 px-4 text-sm rounded-lg transition-all
                         ${isActive ? 'text-[#D32F2F] font-bold bg-red-50' : 'text-gray-500 hover:text-gray-800'}
@@ -173,6 +184,8 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
           ))}
         </div>
       </nav>
-    </aside>
+    </aside> 
+    <Coupons isOpen={isCouponOpen} onClose={() => setIsCouponOpen(false)} /> 
+    </>
   );
 };
