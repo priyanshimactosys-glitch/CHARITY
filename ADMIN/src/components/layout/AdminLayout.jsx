@@ -24,6 +24,12 @@ export const AdminLayout = () => {
     if (path.includes('/admin/operations/appointments/walk-in')) return "Add Walk-in Visit"; 
     if (path.includes('/admin/operations/calendar')) return "Calendar"; 
 
+    // Content Management 
+    if (path.includes('/admin/content/pages')) return "Page";
+    if (path.includes('/admin/content/template')) return "Page Template";
+    if (path.includes('/admin/content/announcements')) return "Announcements";
+
+
     // Others
     if (path.includes('/admin/volunteers')) return "Volunteer Management";
     if (path.includes('/admin/dashboard')) return "Admin Dashboard";

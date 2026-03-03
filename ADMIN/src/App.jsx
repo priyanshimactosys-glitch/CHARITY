@@ -8,7 +8,11 @@ import { NewAppointment } from "./components/pages/admin/Operations/NewAppointme
 import { AddWalkIn } from "./components/pages/admin/Operations/AddWalkIn";
 import CalendarView from "./components/pages/admin/Operations/CalendarView"; 
 
+import Page from "./components/pages/admin/ContentManagement/PagesForm/Page";
+import Template from "./components/pages/admin/ContentManagement/PageTemplate/Template";
 import Audit from "./components/pages/admin/Reports&Logs/Audit";
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,16 +27,13 @@ function App() {
           <Route path="operations/appointments/new" element={<NewAppointment />} />
           <Route path="operations/appointments/walk-in" element={<AddWalkIn />} />
           <Route path="operations/calendar" element={<CalendarView />} />
+          <Route path="content/pages" element={<Page />} /> 
+          <Route path="content/template" element={<Template />} /> 
 
 
           {/* Report & Logs routes   */}
           <Route path="reports/audit" element={<Audit />} />{" "}
-          <Route
-            path="content"
-            element={
-              <div className="p-10 font-bold">Content Page Coming Soon</div>
-            }
-          />
+          
         </Route>
       </Routes>
     </BrowserRouter>
