@@ -9,6 +9,10 @@ import { AddWalkIn } from "./components/pages/admin/Operations/AddWalkIn";
 import CalendarView from "./components/pages/admin/Operations/CalendarView"; 
 
 import Audit from "./components/pages/admin/Reports&Logs/Audit";
+import Coupons from "./components/pages/admin/MarketingEngagement/Coupons"; 
+
+import UsersDashboard from "./components/pages/admin/PeopleManagement/User/Users"; 
+
 function App() {
   return (
     <BrowserRouter>
@@ -26,13 +30,13 @@ function App() {
 
 
           {/* Report & Logs routes   */}
-          <Route path="reports/audit" element={<Audit />} />{" "}
-          <Route
-            path="content"
-            element={
-              <div className="p-10 font-bold">Content Page Coming Soon</div>
-            }
-          />
+          <Route path="reports/audit" element={<Audit />} />
+          
+          {/* Marketing & Engagement Route */}  
+          <Route path="marketing/coupons" element={<Coupons/>} /> 
+
+          {/* people management  */} 
+          <Route path="people/users" element={<UsersDashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
