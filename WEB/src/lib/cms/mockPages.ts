@@ -71,5 +71,22 @@ export const mockPages: any = {
 
         ],
     },
+     "contact-us": {
+        slug: "contact-us",
+        template: "standard",
+        sections: [
+            {
+                type: "hero",
+                content: {
+                    title: "Contact Us",
+                    subtitle: "We're here to help! Get in touch with our friendly team today!",
+                    backgroundImage: '/images/slug-bg.png',
+                    mobileImage: '/images/slug-mobil-bg.png'
+                },
+            },
+            { "type": "contact_section" },
+
+        ],
+    },
 
 };

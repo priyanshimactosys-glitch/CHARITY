@@ -3,10 +3,10 @@
 import { useState } from "react";
 import StepOne from "./components/StepOne";
 import Container from "@/src/components/common/Container";
-// import StepTwo from "./components/StepTwo";
-// import StepThree from "./components/StepThree";
-// import StepFour from "./components/StepFour";
-// import Confirmation from "./components/Confirmation";
+import StepTwo from "./components/StepTwo";
+import StepThree from "./components/StepThree";
+import StepFour from "./components/StepFour";
+import Confirmation from "./components/Confirmation";
 
 export default function BookAppointmentPage() {
 
@@ -22,10 +22,10 @@ export default function BookAppointmentPage() {
 
 
         {step === 1 && <StepOne next={nextStep} />}
-        {/* {step === 2 && <StepTwo next={nextStep} back={prevStep} />}
+        {step === 2 && <StepTwo next={nextStep} back={prevStep} />}
         {step === 3 && <StepThree next={nextStep} back={prevStep} />}
         {step === 4 && <StepFour next={nextStep} back={prevStep} />}
-        {step === 5 && <Confirmation />} */}
+        {step === 5 && <Confirmation />}
 
       </Container>
 

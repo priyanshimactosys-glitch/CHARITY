@@ -12,7 +12,6 @@ import Page from "./components/pages/admin/ContentManagement/PagesForm/Page";
 import Template from "./components/pages/admin/ContentManagement/PageTemplate/Template";
 import Audit from "./components/pages/admin/Reports&Logs/Audit";
 
-
 function App() {
   return (
     <BrowserRouter>
