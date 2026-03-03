@@ -6,9 +6,11 @@ import MobileMenu from "./MobileMenu";
 import { Globe, Menu } from "lucide-react";
 import Button from "../../common/Button";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
+  const router = useRouter();
 
   return (
     <nav className="bg-white relative z-50 ">
@@ -48,10 +50,9 @@ export default function Header() {
               Eng
             </button>
 
-            <button className="font-semibold hover:text-red-600 text-sm sm:text-base">
+            <button onClick={()=>router.push('/login')} className="font-semibold hover:text-red-600 text-sm sm:text-base">
               Sign In
             </button>
-
             <div className="w-[1px] h-6 bg-text"></div>
 
             <Button
