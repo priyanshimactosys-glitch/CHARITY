@@ -9,8 +9,8 @@ import {
   MoreHorizontal,
   X,
   Check,
-} from "lucide-react"; 
-import AddUser from './AddUser'; 
+} from "lucide-react";
+import AddUser from "./AddUser";
 
 const Users = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -120,7 +120,7 @@ const Users = () => {
     return () => window.removeEventListener("click", handleClick);
   }, []);
 
-  // --- Search & Tab Filtering Logic ---
+  // Search & Tab Filtering
   const filteredUsers = useMemo(() => {
     return users.filter((user) => {
       const labelMap = { Admins: "Admin", "Pending Invite": "Pending" };
@@ -250,7 +250,6 @@ const Users = () => {
             <tbody className="divide-y divide-gray-50">
               {filteredUsers.length > 0 ? (
                 filteredUsers.map((user) => {
-                  // Check karein ki kya ye row edit ho rahi hai
                   const isEditing = editingId === user.id;
 
                   return (
@@ -258,7 +257,7 @@ const Users = () => {
                       key={user.id}
                       className="text-[#333] text-[13px] hover:bg-gray-50 transition-colors"
                     >
-                      {/* Name Column */}
+                      {/*Name*/}
                       <td className="px-6 py-5">
                         {isEditing ? (
                           <input
@@ -342,7 +341,7 @@ const Users = () => {
                         )}
                       </td>
 
-                      {/* Status & Created (Inhe hum read-only hi rakh rahe hain) */}
+                      {/* Status & Created */}
                       <td className="px-6 py-5 text-gray-400 italic font-medium">
                         {user.status}
                       </td>
@@ -357,7 +356,6 @@ const Users = () => {
                       >
                         <div className="flex items-center justify-center gap-2">
                           {isEditing ? (
-                            // Agar editing mode hai toh TICK (Check) icon dikhao
                             <button
                               onClick={() => handleSaveEdit(user.id)}
                               className="text-white p-1.5 border border-green-600 rounded-lg bg-green-500 hover:bg-green-600 shadow-sm"
@@ -365,7 +363,6 @@ const Users = () => {
                               <Check size={16} />
                             </button>
                           ) : (
-                            // Agar normal mode hai toh PENCIL (Edit2) icon dikhao
                             <button
                               onClick={() => handleEditClick(user)}
                               className="text-[#F97316] p-1.5 border border-orange-100 rounded-lg bg-orange-50 hover:bg-orange-100"
@@ -406,12 +403,12 @@ const Users = () => {
                               <ShieldCheck
                                 size={16}
                                 className="text-gray-400"
-                              />{" "}
+                              />
                               Permissions/Roles
                             </button>
 
                             <button className="w-full px-4 py-2 text-left text-[13px] text-red-500 hover:bg-red-50 flex items-center gap-3 border-t border-gray-100">
-                              <XCircle size={16} className="text-red-300" />{" "}
+                              <XCircle size={16} className="text-red-300" />
                               Deactivate
                             </button>
 
@@ -419,7 +416,7 @@ const Users = () => {
                               <MoreHorizontal
                                 size={16}
                                 className="text-gray-400"
-                              />{" "}
+                              />
                               More
                             </button>
                           </div>
@@ -463,7 +460,7 @@ const Users = () => {
       </div>
 
       {/* --- ADD USER MODAL --- */}
-      <AddUser isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> 
+      <AddUser isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
