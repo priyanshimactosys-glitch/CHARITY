@@ -38,7 +38,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
       hasDropdown: true,
       subMenus: [
         { name: 'Users ', path: '/admin/people/users' },
-        { name: 'Career/Volunteers', path: '/admin/people/career' }
+        { name: 'Career/Volunteers', path: '/admin/people/careers' }
       ]
     },
     { 
