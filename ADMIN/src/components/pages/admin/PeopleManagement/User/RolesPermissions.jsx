@@ -45,7 +45,6 @@ const PermissionSection = ({
         </button>
       )}
     </div>
-
     <div className="grid grid-cols-12 gap-4 bg-[#F9F5FF] py-2.5 px-4 text-[13px] font-bold text-gray-800 border-b border-gray-100">
       <div className="col-span-4">{title}</div>
       <div className="col-span-2 text-center">View</div>
@@ -53,7 +52,6 @@ const PermissionSection = ({
       <div className="col-span-2 text-center">Edit</div>
       <div className="col-span-2 text-center">Delete</div>
     </div>
-
     <div className="bg-white">
       {items.map((item, idx) => (
         <PermissionRow
@@ -143,18 +141,15 @@ const RolesPermissions = ({ onCancel, onSave, onAssign }) => {
     if (e) e.preventDefault();
     if (onCancel) onCancel();
   };
-
   const handleSaveClick = () => {
     console.log("Permissions Data:", userPermissions);
     alert("Changes Saved!");
     if (onSave) onSave(userPermissions);
   };
-
   const handleAssignClick = () => {
     alert("Role Assigned!");
     if (onAssign) onAssign(userPermissions);
   };
-
   return (
     <div className="p-4 space-y-2 bg-white">
       <div className="space-y-4">
@@ -169,7 +164,6 @@ const RolesPermissions = ({ onCancel, onSave, onAssign }) => {
           />
         ))}
       </div>
-
       {/* Footer Buttons */}
       <div className="flex justify-center gap-6 pt-10 pb-6 bg-white sticky bottom-0 border-t mt-4 z-[50]">
         <button

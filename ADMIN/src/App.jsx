@@ -11,6 +11,7 @@ import CalendarView from "./components/pages/admin/Operations/CalendarView";
 import Page from "./components/pages/admin/ContentManagement/PagesForm/Page";
 import Template from "./components/pages/admin/ContentManagement/PageTemplate/Template";
 import Audit from "./components/pages/admin/Reports&Logs/Audit";
+import Careers from "./components/pages/admin/PeopleManagement/Career/Careers";
 import Users from "./components/pages/admin/PeopleManagement/User/Users";
 function App() {
   return (
@@ -35,8 +36,13 @@ function App() {
             element={<AddWalkIn />}
           />
           <Route path="operations/calendar" element={<CalendarView />} />
-          <Route path="content/pages" element={<Page />} />
-          <Route path="content/template" element={<Template />} />
+          <Route path="content/pages" element={<Page />} /> 
+          <Route path="content/template" element={<Template />} /> 
+
+          {/* People Managment routes */}
+          <Route path="people/careers" element={<Careers />} />
+          <Route path="people/users" element={<Users />} />
+
           {/* Report & Logs routes   */}
           <Route path="reports/audit" element={<Audit />} />{" "}
           {/* people management  */}

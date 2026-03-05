@@ -30,6 +30,9 @@ export const AdminLayout = () => {
     if (path.includes('/admin/content/announcements')) return "Announcements";
 
 
+    // People Management
+    if (path.includes('/admin/people/careers')) return "Careers/Volunteers";
+
     // Others
     if (path.includes('/admin/volunteers')) return "Volunteer Management";
     if (path.includes('/admin/dashboard')) return "Admin Dashboard";
