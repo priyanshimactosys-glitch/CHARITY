@@ -116,7 +116,7 @@ const Coupons = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Status Section - Updated with Checkmarks */}
+          {/* Status Section */}
           <div className="mt-4 space-y-3 text-left"> 
             <label className="block text-[14px] font-bold text-gray-800">Status</label>
             <div className="flex items-center gap-8">
