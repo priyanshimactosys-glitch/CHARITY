@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "roleName": "Donations",
+    "description": "Lorem Ipsum is....",
+    "permissions": "Allow"
+  },
+  {
+    "id": 2,
+    "roleName": "Donations",
+    "description": "Lorem Ipsum is....",
+    "permissions": "Allow"
+  },
+  {
+    "id": 3,
+    "roleName": "Donations",
+    "description": "Lorem Ipsum is....",
+    "permissions": "Allow"
+  },
+  {
+    "id": 4,
+    "roleName": "Donations",
+    "description": "Lorem Ipsum is....",
+    "permissions": "Allow"
+  },
+  {
+    "id": 5,
+    "roleName": "Donations",
+    "description": "Lorem Ipsum is....",
+    "permissions": "Allow"
+  },
+  {
+    "id": 6,
+    "roleName": "Donations",
+    "description": "Lorem Ipsum is....",
+    "permissions": "Allow"
+  },
+  {
+    "id": 7,
+    "roleName": "Donations",
+    "description": "Lorem Ipsum is....",
+    "permissions": "Allow"
+  }
+]

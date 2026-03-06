@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import pageData from './pagedata.json'; 
-import { FaSearch, FaChevronLeft, FaChevronRight, FaCheck } from 'react-icons/fa';
+// import { FaSearch, FaChevronLeft, FaChevronRight, FaCheck } from 'react-icons/fa';
 
 import AddUserIcon from "../../../../../assets/icons/adduser.png";
 import EditIcon from "../../../../../assets/icons/edit.png"; 
@@ -10,6 +10,11 @@ import ViewIcon from "../../../../../assets/icons/view.png";
 import PublishIcon from "../../../../../assets/icons/publish.png";
 import UnpublishIcon from "../../../../../assets/icons/unpublish.png";
 import DuplicateIcon from "../../../../../assets/icons/duplicate.png";
+import { FaSearch, FaPlus, FaRegEye, FaChevronLeft, FaChevronRight, FaCheck } from 'react-icons/fa';
+import { FiEdit2 } from "react-icons/fi";
+import { MonitorDown } from "lucide-react";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
 
 
 import CreatePage from './CreatePage'; 
@@ -29,7 +34,7 @@ const Page = () => {
   );
 
   return (
-    <div className="bg-[#f4f5f7] min-h-screen">
+    <div className="p-2 bg-[#f4f5f7] min-h-screen font-sans">
       
       
       <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-wrap items-center justify-between gap-2 mb-4">
