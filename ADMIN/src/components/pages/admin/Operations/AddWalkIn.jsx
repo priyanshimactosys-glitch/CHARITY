@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Calendar, ChevronDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import {ChevronDown } from "lucide-react";  
+import CalendarIconImg from "../../../../assets/icons/calendar.png"; 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom"; 
+
 
 export const AddWalkIn = () => {
   const navigate = useNavigate();
@@ -23,6 +27,12 @@ export const AddWalkIn = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleDateChange = (date) => {
+    if (date) {
+      const formattedDate = date.toISOString().split('T')[0];
+      setFormData((prev) => ({ ...prev, date: formattedDate }));
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Final Data for API Team:", formData);
@@ -44,14 +54,14 @@ export const AddWalkIn = () => {
   };
 
   return (
-    <div className="p-2 bg-[#F8F9FA] min-h-[80vh] font-sans flex flex-col">
+    <div className="p-0 bg-[#F8F9FA] min-h-[80vh] flex flex-col">
       <div className="flex-grow">
-        <form onSubmit={handleSubmit} className="bg-white rounded-[32px] p-10 shadow-sm border border-gray-100 max-w-5xl mx-auto mt-4">
+        <form onSubmit={handleSubmit} className="bg-white rounded-[32px] md:p-10 p-8 shadow-sm border border-gray-100 max-w-full mx-auto">
           
-          <div className="flex items-center gap-2 mb-10 text-gray-400">
-            <Calendar size={18} strokeWidth={2.5} />
+          <div className="flex items-center gap-2 mb-10 text-gray-400"> 
+          <img src={CalendarIconImg} alt="cal" className="w-5 h-5 opacity-100" />
             <p className="text-[15px] font-medium tracking-tight">Create a new appointments by filling out the details below</p>
-          </div>
+          </div> 
 
           <div className="space-y-8"> 
           
@@ -117,21 +127,25 @@ export const AddWalkIn = () => {
             </div>
 
             {/* Date, Time & Status */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end"> 
               <div>
                 <label className="block text-sm font-bold text-[#1A202C] mb-3">Date & Time</label>
                 <div className="relative">
-                  <input 
-                    type="date" 
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    className="w-full border border-gray-200 rounded-xl px-5 py-4 text-sm bg-white cursor-pointer outline-none"
-                    required
+                <DatePicker
+                    selected={new Date(formData.date)}
+                    onChange={handleDateChange}
+                    dateFormat="yyyy-MM-dd"
+                    className="w-full border border-gray-200 rounded-xl pl-5 pr-12 py-4 text-sm bg-white outline-none cursor-pointer"
                   />
+                  <img 
+                    src={CalendarIconImg} 
+                    alt="calendar"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none" 
+                  /> 
                 </div>
-              </div>
-              <div className="md:pt-8">
+              </div> 
+
+              <div>
                 <div className="relative">
                   <select name="time" value={formData.time} onChange={handleChange} className="w-full border border-gray-200 rounded-xl px-5 py-4 text-sm appearance-none bg-white outline-none cursor-pointer">
                     <option value="10:00 AM">10:00 AM</option>

@@ -3,28 +3,29 @@ import { useSearchParams, useNavigate } from "react-router-dom"; // useNavigate 
 import {
   Search,
   Plus,
-  Edit2,
-  Trash2,
   ChevronLeft,
   ChevronRight,
   Eye,
   Calendar,
   CheckCircle,
   XCircle,
+  Edit,
 } from "lucide-react";
+import EditIcon from "../../../../assets/icons/edit.png";
+import DeleteIcon from "../../../../assets/icons/delete.png";
 
 export const ManageAppointments = () => {
   const [activeTab, setActiveTab] = useState("Upcoming (7)");
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  const navigate = useNavigate(); // 1. Navigation hook initialize kiya
 
-  // Search Logic from URL 
+  const navigate = useNavigate();
+
+  // Search Logic from URL
   const [searchParams] = useSearchParams();
   const globalSearchQuery = searchParams.get("q") || ""; // AdminLayout wala search term
 
-  // States for Functionality 
+  // States for Functionality
   const [showManageDropdown, setShowManageDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -43,14 +44,32 @@ export const ManageAppointments = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true); 
+        setLoading(true);
 
         // API Simulation
         setTimeout(() => {
           setAppointments([
-            { id: 1, name: "Lisa Moore", date: "April 25, 2024. 4:00 PM", service: "Tutoring Session", status: "Scheduled" },
-            { id: 2, name: "Lisa Moore", date: "April 25, 2024. 4:00 PM", service: "Tutoring Session", status: "Walk-ins" },
-            { id: 3, name: "Lisa Moore", date: "April 25, 2024. 4:00 PM", service: "Tutoring Session", status: "Scheduled" },
+            {
+              id: 1,
+              name: "Lisa Moore",
+              date: "April 25, 2024. 4:00 PM",
+              service: "Tutoring Session",
+              status: "Scheduled",
+            },
+            {
+              id: 2,
+              name: "Lisa Moore",
+              date: "April 25, 2024. 4:00 PM",
+              service: "Tutoring Session",
+              status: "Walk-ins",
+            },
+            {
+              id: 3,
+              name: "Lisa Moore",
+              date: "April 25, 2024. 4:00 PM",
+              service: "Tutoring Session",
+              status: "Scheduled",
+            },
           ]);
           setLoading(false);
         }, 500);
@@ -61,33 +80,33 @@ export const ManageAppointments = () => {
     fetchData();
   }, [activeTab]);
 
-  //  Search Filter Logic 
-  const filteredAppointments = appointments.filter((item) =>
-    item.name.toLowerCase().includes(globalSearchQuery.toLowerCase()) ||
-    item.service.toLowerCase().includes(globalSearchQuery.toLowerCase())
+  //  Search Filter Logic
+  const filteredAppointments = appointments.filter(
+    (item) =>
+      item.name.toLowerCase().includes(globalSearchQuery.toLowerCase()) ||
+      item.service.toLowerCase().includes(globalSearchQuery.toLowerCase()),
   );
 
-  //  Handlers 
+  //  Handlers
   const handleEdit = (id) => alert(`Editing Appointment ID: ${id}`);
-  
+
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this appointment?")) {
-      setAppointments(appointments.filter(item => item.id !== id));
+      setAppointments(appointments.filter((item) => item.id !== id));
     }
   };
 
-  // Click par naye page par bhejne ke liye 
+  // Click par naye page par bhejne ke liye
   const handleNewAppointment = () => {
-    navigate("/admin/operations/appointments/new"); 
+    navigate("/admin/operations/appointments/new");
   };
-  
+
   const handleWalkIn = () => {
-  navigate("/admin/operations/appointments/walk-in"); 
-};
+    navigate("/admin/operations/appointments/walk-in");
+  };
 
   return (
-    <div className="p-6 bg-[#F8F9FA] min-h-screen"> 
-
+    <div className="bg-white min-h-screen">
       {/* TOP CARD */}
       <div className="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-gray-100">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6">
@@ -96,16 +115,16 @@ export const ManageAppointments = () => {
           </p>
 
           <div className="flex gap-3 mt-4 md:mt-0">
-            <button 
+            <button
               onClick={handleNewAppointment}
               className="bg-[#0061AF] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-bold text-sm shadow-sm active:scale-95 transition-all"
             >
               <Plus size={18} strokeWidth={3} /> New Appointments
             </button>
 
-            <button 
+            <button
               onClick={handleWalkIn}
-              className="bg-[#D32F2F] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-bold text-sm shadow-sm active:scale-95 transition-all"
+              className="bg-red-800 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-bold text-sm shadow-sm active:scale-95 transition-all"
             >
               <Plus size={18} strokeWidth={3} /> Walk-in Visit
             </button>
@@ -134,7 +153,8 @@ export const ManageAppointments = () => {
       </div>
 
       {/* MAIN TABLE CARD */}
-      <div className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden">
+      <div style={{ width: '1061px', minHeight: '392px', opacity: 1 }}
+       className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden">
         <div className="flex border-b border-gray-100">
           {["Upcoming (7)", "Past", "Cancelled"].map((tab) => (
             <button
@@ -168,7 +188,7 @@ export const ManageAppointments = () => {
 
           {/* MANAGE SERVICES POPUP */}
           <div className="relative" ref={dropdownRef}>
-            <button 
+            <button
               onClick={() => setShowManageDropdown(!showManageDropdown)}
               className="bg-[#E9D9EB] text-[#5B2D62] px-6 py-3 rounded-lg text-sm font-bold active:scale-95 transition-all"
             >
@@ -177,17 +197,31 @@ export const ManageAppointments = () => {
 
             {showManageDropdown && (
               <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-100 shadow-xl rounded-xl z-50 overflow-hidden py-1 animate-in fade-in zoom-in duration-200">
-                <button onClick={() => setShowManageDropdown(false)} className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-b border-gray-50">
-                  <Eye size={16} className="text-gray-400"/> View Details
+                <button
+                  onClick={() => setShowManageDropdown(false)}
+                  className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-b border-gray-50"
+                >
+                  <Eye size={16} className="text-gray-400" /> View Details
                 </button>
-                <button onClick={() => setShowManageDropdown(false)} className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-b border-gray-50">
-                  <Calendar size={16} className="text-gray-400"/> Reschedule
+                <button
+                  onClick={() => setShowManageDropdown(false)}
+                  className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-b border-gray-50"
+                >
+                  <Calendar size={16} className="text-gray-400" /> Reschedule
                 </button>
-                <button onClick={() => setShowManageDropdown(false)} className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-b border-gray-50">
-                  <CheckCircle size={16} className="text-gray-400"/> Mark as Completed
+                <button
+                  onClick={() => setShowManageDropdown(false)}
+                  className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-b border-gray-50"
+                >
+                  <CheckCircle size={16} className="text-gray-400" /> Mark as
+                  Completed
                 </button>
-                <button onClick={() => setShowManageDropdown(false)} className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3">
-                  <XCircle size={16} className="text-gray-400"/> Cancel Appointment
+                <button
+                  onClick={() => setShowManageDropdown(false)}
+                  className="w-full text-left px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 flex items-center gap-3"
+                >
+                  <XCircle size={16} className="text-gray-400" /> Cancel
+                  Appointment
                 </button>
               </div>
             )}
@@ -203,7 +237,7 @@ export const ManageAppointments = () => {
           ) : (
             <table className="w-full text-left">
               <thead>
-                <tr className="bg-[#F9F5F9] text-[#1A202C] text-[13px] font-bold uppercase tracking-tight">
+                <tr className="bg-[#FFF0F3] text-[#1A202C] text-[13px] font-bold uppercase tracking-tight">
                   <th className="px-10 py-5">Name</th>
                   <th className="px-10 py-5">Date</th>
                   <th className="px-10 py-5">Service</th>
@@ -212,32 +246,54 @@ export const ManageAppointments = () => {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-50">
+              <tbody className="divide-y divide-gray-50 bg-[#FFF9FA]">
                 {filteredAppointments.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="px-10 py-6 text-[14px] text-gray-700 font-medium">{item.name}</td>
-                    <td className="px-10 py-6 text-[14px] text-gray-600 font-medium">{item.date}</td>
-                    <td className="px-10 py-6 text-[14px] text-gray-400 font-medium">{item.service}</td>
+                  <tr
+                    key={item.id}
+                    className="hover:bg-gray-50/50 transition-colors"
+                  >
+                    <td className="px-10 py-6 text-[14px] text-gray-700 font-medium">
+                      {item.name}
+                    </td>
+                    <td className="px-10 py-6 text-[14px] text-gray-600 font-medium">
+                      {item.date}
+                    </td>
+                    <td className="px-10 py-6 text-[14px] text-gray-400 font-medium">
+                      {item.service}
+                    </td>
                     <td className="px-10 py-6">
-                      <span className={`px-4 py-1.5 rounded-lg text-[10px] font-bold text-white uppercase tracking-wider ${
-                        item.status === "Scheduled" ? "bg-[#128C45]" : "bg-[#B48C64]"
-                      }`}>
+                      <span
+                        className={`px-4 py-1.5 rounded-lg text-[10px] font-bold text-white uppercase tracking-wider ${
+                          item.status === "Scheduled"
+                            ? "bg-[#128C45]"
+                            : "bg-[#B48C64]"
+                        }`}
+                      >
                         {item.status}
                       </span>
                     </td>
                     <td className="px-10 py-6">
                       <div className="flex justify-center gap-3">
-                        <button 
+                        <button
                           onClick={() => handleEdit(item.id)}
-                          className="text-[#F97316] hover:bg-orange-50 p-1 rounded-md transition-all active:scale-90"
+                          className="hover:scale-110 transition-all active:scale-90"
                         >
-                          <Edit2 size={18} />
+                          <img
+                            src={EditIcon}
+                            alt="edit"
+                            className="w-5 h-5 object-contain"
+                          />
                         </button>
-                        <button 
+
+                        <button
                           onClick={() => handleDelete(item.id)}
-                          className="text-[#EF4444] hover:bg-red-50 p-1 rounded-md transition-all active:scale-90"
+                          className="hover:scale-110 transition-all active:scale-90"
                         >
-                          <Trash2 size={18} />
+                          <img
+                            src={DeleteIcon}
+                            alt="delete"
+                            className="w-5 h-5 object-contain"
+                          />
                         </button>
                       </div>
                     </td>
@@ -245,7 +301,10 @@ export const ManageAppointments = () => {
                 ))}
                 {filteredAppointments.length === 0 && (
                   <tr>
-                    <td colSpan="5" className="px-10 py-10 text-center text-gray-400 italic">
+                    <td
+                      colSpan="5"
+                      className="px-10 py-10 text-center text-gray-400 italic"
+                    >
                       No results found for "{globalSearchQuery}"
                     </td>
                   </tr>
@@ -257,11 +316,21 @@ export const ManageAppointments = () => {
 
         {/* Pagination */}
         <div className="py-6 flex justify-center items-center gap-2 border-t border-gray-100 bg-white">
-          <button className="p-2 text-gray-300 hover:text-gray-500"><ChevronLeft size={20} /></button>
-          <button className="w-8 h-8 rounded border border-[#D32F2F] text-[#D32F2F] font-bold text-xs bg-white">1</button>
-          <button className="w-8 h-8 rounded border border-gray-200 text-gray-400 font-bold text-xs hover:border-gray-400">2</button>
-          <button className="w-8 h-8 rounded border border-gray-200 text-gray-400 font-bold text-xs hover:border-gray-400">3</button>
-          <button className="p-2 text-gray-300 hover:text-gray-500"><ChevronRight size={20} /></button>
+          <button className="p-2 text-gray-300 hover:text-gray-500">
+            <ChevronLeft size={20} />
+          </button>
+          <button className="w-8 h-8 rounded border border-[#D32F2F] text-[#D32F2F] font-bold text-xs bg-white">
+            1
+          </button>
+          <button className="w-8 h-8 rounded border border-gray-200 text-gray-400 font-bold text-xs hover:border-gray-400">
+            2
+          </button>
+          <button className="w-8 h-8 rounded border border-gray-200 text-gray-400 font-bold text-xs hover:border-gray-400">
+            3
+          </button>
+          <button className="p-2 text-gray-300 hover:text-gray-500">
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </div>

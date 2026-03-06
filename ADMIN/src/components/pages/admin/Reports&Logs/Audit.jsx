@@ -4,15 +4,16 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Search,
-  Calendar,
+  Search, 
 } from "lucide-react";
+
+import CalendarIconImg from "../../../../assets/icons/calendar.png";
 
 const Audit = () => {
   const [activePage, setActivePage] = useState(1);
   const [localSearch, setLocalSearch] = useState("");
 
-  // DATE RANGE 
+  // DATE RANGE
   const [dateRange, setDateRange] = useState({
     start: "2026-02-01",
     end: "2026-02-12",
@@ -26,24 +27,82 @@ const Audit = () => {
   });
 
   const initialData = [
-    { id: 1, time: "01/02/2026", hour: "10:41 AM", admin: "A. Johnson", role: "Admin", action: "Processed", module: "Passport Application", ip: "192.168.1.1", status: "Success" },
-    { id: 2, time: "05/02/2026", hour: "11:20 AM", admin: "Sarah Lee", role: "Editor", action: "Create", module: "User Profile", ip: "192.168.1.45", status: "Success" },
-    { id: 3, time: "10/02/2026", hour: "09:15 AM", admin: "Michael K.", role: "Admin", action: "Processed", module: "Visa Status", ip: "172.16.0.5", status: "Success" },
-    { id: 4, time: "12/02/2026", hour: "04:50 PM", admin: "A. Johnson", role: "Admin", action: "Delete", module: "Passport Application", ip: "192.168.1.1", status: "Success" },
-    { id: 5, time: "15/02/2026", hour: "12:05 PM", admin: "Admin User", role: "SuperAdmin", action: "Processed", module: "Settings", ip: "10.0.0.1", status: "Success" },
-    { id: 6, time: "20/02/2026", hour: "08:30 AM", admin: "Sarah Lee", role: "Editor", action: "Create", module: "Document Upload", ip: "192.168.1.45", status: "Success" },
+    {
+      id: 1,
+      time: "01/02/2026",
+      hour: "10:41 AM",
+      admin: "A. Johnson",
+      role: "Admin",
+      action: "Processed",
+      module: "Passport Application",
+      ip: "192.168.1.1",
+      status: "Success",
+    },
+    {
+      id: 2,
+      time: "05/02/2026",
+      hour: "11:20 AM",
+      admin: "Sarah Lee",
+      role: "Editor",
+      action: "Create",
+      module: "User Profile",
+      ip: "192.168.1.45",
+      status: "Success",
+    },
+    {
+      id: 3,
+      time: "10/02/2026",
+      hour: "09:15 AM",
+      admin: "Michael K.",
+      role: "Admin",
+      action: "Processed",
+      module: "Visa Status",
+      ip: "172.16.0.5",
+      status: "Success",
+    },
+    {
+      id: 4,
+      time: "12/02/2026",
+      hour: "04:50 PM",
+      admin: "A. Johnson",
+      role: "Admin",
+      action: "Delete",
+      module: "Passport Application",
+      ip: "192.168.1.1",
+      status: "Success",
+    },
+    {
+      id: 5,
+      time: "15/02/2026",
+      hour: "12:05 PM",
+      admin: "Admin User",
+      role: "SuperAdmin",
+      action: "Processed",
+      module: "Settings",
+      ip: "10.0.0.1",
+      status: "Success",
+    },
+    {
+      id: 6,
+      time: "20/02/2026",
+      hour: "08:30 AM",
+      admin: "Sarah Lee",
+      role: "Editor",
+      action: "Create",
+      module: "Document Upload",
+      ip: "192.168.1.45",
+      status: "Success",
+    },
   ];
 
   // Handler for Date Toggle
   const handleDateSelection = (e) => {
     const selected = e.target.value;
-    if (!isSelectingEnd) { 
-
+    if (!isSelectingEnd) {
       // Set Start Date and prepare for End Date
       setDateRange((prev) => ({ ...prev, start: selected }));
       setIsSelectingEnd(true);
-    } else { 
-
+    } else {
       //Set End Date
       setDateRange((prev) => ({ ...prev, end: selected }));
       setIsSelectingEnd(false);
@@ -51,8 +110,7 @@ const Audit = () => {
   };
 
   const filteredData = useMemo(() => {
-    return initialData.filter((item) => { 
-
+    return initialData.filter((item) => {
       // filter logic
       const matchesSearch =
         item.admin.toLowerCase().includes(localSearch.toLowerCase()) ||
@@ -71,7 +129,6 @@ const Audit = () => {
 
       return matchesSearch && matchesAction && matchesDate;
     });
-    
   }, [localSearch, filters, dateRange, isSelectingEnd]);
 
   const handleExport = () => {
@@ -91,8 +148,7 @@ const Audit = () => {
   };
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500"> 
-
+    <div className="space-y-6 animate-in fade-in duration-500">
       {/* TOP FILTER SECTION*/}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
         <div className="flex justify-between items-center mb-6">
@@ -148,13 +204,12 @@ const Audit = () => {
           >
             <div className="w-full text-[11px] flex items-center justify-between text-gray-600 font-bold cursor-pointer">
               <span className="flex items-center gap-2">
-                <Calendar
-                  size={14}
-                  className={
-                    isSelectingEnd
-                      ? "text-red-500 animate-pulse"
-                      : "text-gray-400"
-                  }
+                <img
+                  src={CalendarIconImg}
+                  alt="calendar"
+                  className={`w-3.5 h-3.5 object-contain ${
+                    isSelectingEnd ? "animate-pulse" : "opacity-70"
+                  }`}
                 />
                 {isSelectingEnd
                   ? `Select End Date...`
@@ -165,8 +220,7 @@ const Audit = () => {
             <input
               type="date"
               className="absolute inset-0 opacity-0 cursor-pointer z-10 w-full"
-              onChange={handleDateSelection} 
-
+              onChange={handleDateSelection}
               // opens calendar again immediately for better flow
               onClick={(e) => e.target.showPicker && e.target.showPicker()}
             />
@@ -175,7 +229,7 @@ const Audit = () => {
       </div>
 
       {/* --- TABLE SECTION --- */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-pink-100 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-4 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="relative w-full sm:w-2/3 flex">
             <input

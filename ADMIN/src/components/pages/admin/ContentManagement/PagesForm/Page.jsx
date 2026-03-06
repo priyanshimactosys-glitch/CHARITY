@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import pageData from './pagedata.json'; 
-import { FaSearch, FaPlus, FaRegEdit, FaRegEye, FaChevronLeft, FaChevronRight, FaCheck } from 'react-icons/fa';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { MdOutlinePublish, MdOutlineUnpublished } from 'react-icons/md';
+import { FaSearch, FaChevronLeft, FaChevronRight, FaCheck } from 'react-icons/fa';
+
+import AddUserIcon from "../../../../../assets/icons/adduser.png";
+import EditIcon from "../../../../../assets/icons/edit.png"; 
+import VectorIcon from "../../../../../assets/icons/vector.png";
+import DeleteIcon from "../../../../../assets/icons/delete.png";
+import ViewIcon from "../../../../../assets/icons/view.png";
+import PublishIcon from "../../../../../assets/icons/publish.png";
+import UnpublishIcon from "../../../../../assets/icons/unpublish.png";
+import DuplicateIcon from "../../../../../assets/icons/duplicate.png";
 
 
 import CreatePage from './CreatePage'; 
@@ -22,7 +29,7 @@ const Page = () => {
   );
 
   return (
-    <div className="p-6 bg-[#f4f5f7] min-h-screen font-sans">
+    <div className="bg-[#f4f5f7] min-h-screen">
       
       
       <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-wrap items-center justify-between gap-2 mb-4">
@@ -48,12 +55,13 @@ const Page = () => {
           </button>
           
           
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="bg-primary text-white px-6 py-2.5 rounded-md font-bold text-sm flex items-center gap-2 cursor-pointer hover:bg-red-700 transition-all shadow-sm"
-          >
-            <FaPlus size={14} /> Create Page
-          </button>
+        <button 
+  onClick={() => setIsModalOpen(true)}
+  className="bg-primary text-white px-6 py-2.5 rounded-md font-bold text-sm flex items-center gap-2 cursor-pointer hover:bg-red-700 transition-all shadow-sm"
+>
+  <img src={AddUserIcon} alt="add" className="w-4 h-4" /> 
+  Create Page
+</button> 
         </div>
       </div>
 
@@ -78,38 +86,54 @@ const Page = () => {
                   <td className="p-5 text-gray-600 text-[14px]">{item.menuPage}</td>
                   <td className="p-5 text-gray-600 text-[14px]">{item.lastUpdate}</td>
                   <td className="p-5 text-center relative">
-                    <div className="flex justify-center items-center gap-4">
-                      <button 
-                        onClick={() => setActiveMenu(activeMenu === item.id ? null : item.id)}
-                        className="text-orange-400 hover:text-orange-500 cursor-pointer transition-transform hover:scale-110"
-                      >
-                        <FaRegEdit size={22} />
-                      </button>
-                      <button className="text-red-500 hover:text-red-600 cursor-pointer transition-transform hover:scale-110">
-                        <RiDeleteBin6Line size={22} />
-                      </button>
-                    </div>
+                  <div className="flex justify-center items-center gap-4">
+  <button 
+    onClick={() => setActiveMenu(activeMenu === item.id ? null : item.id)}
+    className="cursor-pointer transition-transform hover:scale-110"
+  >
+<img src={EditIcon} alt="edit" className="w-[18px] h-[18px] object-contain" />
+  </button>  
 
+
+  <button className="cursor-pointer transition-transform hover:scale-110">
+    <img src={DeleteIcon} alt="delete" className="w-[22px] h-[22px]" />
+  </button>
+</div>
                     
                     {activeMenu === item.id && (
                       <>
                         <div className="fixed inset-0 z-10" onClick={() => setActiveMenu(null)}></div>
                         <div className="absolute right-14 top-14 w-52 bg-white border border-gray-200 rounded-lg shadow-2xl z-20 py-1 text-left">
-                          <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
-                            <FaRegEdit size={14} className="text-gray-500" /> Edit
-                          </button>
+                       {/* Edit */}
+ <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
+        <img src={VectorIcon} alt="vector-edit" className="w-4 h-4 object-contain" /> Edit
+      </button>
+
                           <div className="h-[1px] bg-gray-100 mx-2"></div>
-                          <button className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
-                            <div className="flex items-center gap-3"><FaRegEye size={14} className="text-gray-500" /> View</div>
-                            <FaCheck size={12} className="text-green-500" />
-                          </button>
+                        <button className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
+    <div className="flex items-center gap-3">
+      <img src={ViewIcon} alt="view" className="w-4 h-4" /> View
+    </div>
+    <FaCheck size={12} className="text-green-500" />
+  </button> 
+
+
                           <div className="h-[1px] bg-gray-100 mx-2"></div>
-                          <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
-                            <MdOutlinePublish size={16} className="text-gray-500" /> Publish
-                          </button>
-                          <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
-                            <MdOutlineUnpublished size={16} className="text-gray-500" /> Unpublished
-                          </button>
+                       
+                       
+                       <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
+    <img src={DuplicateIcon} alt="duplicate" className="w-4 h-4" /> Duplicate
+  </button>
+                        
+                     {/* Publish */}
+  <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
+    <img src={PublishIcon} alt="publish" className="w-4 h-4" /> Publish
+  </button>
+
+  {/* Unpublish */}
+  <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
+    <img src={UnpublishIcon} alt="unpublish" className="w-4 h-4" /> Unpublished
+  </button>
                         </div>
                       </>
                     )}

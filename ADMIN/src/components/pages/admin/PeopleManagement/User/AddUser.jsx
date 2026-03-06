@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { X, Calendar, Info, ChevronDown } from "lucide-react";
+import { X, Info, ChevronDown } from "lucide-react";
 import RolesPermissions from "./RolesPermissions";
 import Notifications from "./Notifications.jsx";
 import AccessSettings from "./AccessSettings";
+import CalendarIconImg from "../../../../../assets/icons/calendar.png";
 
 const AddUser = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState("Details");
@@ -69,7 +70,7 @@ const AddUser = ({ isOpen, onClose }) => {
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b bg-gray-50/50">
+        <div className="flex border-b">
           {[
             "Details",
             "Roles & Permissions",
@@ -307,9 +308,10 @@ const AddUser = ({ isOpen, onClose }) => {
                         type="date"
                         className="w-full p-2.5 border border-gray-300 rounded-md bg-white text-gray-600 outline-none"
                       />
-                      <Calendar
-                        className="absolute right-3 top-2.5 text-gray-400 pointer-events-none bg-white"
-                        size={18}
+                      <img
+                        src={CalendarIconImg}
+                        alt="calendar"
+                        className="absolute right-3 top-2.5 w-5 h-5 pointer-events-none bg-white object-contain"
                       />
                     </div>
                   </div>
@@ -405,4 +407,3 @@ const AddUser = ({ isOpen, onClose }) => {
 };
 
 export default AddUser;
-

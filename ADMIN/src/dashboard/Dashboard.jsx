@@ -13,7 +13,6 @@ import SystemSetting from "./SystemSetting";
 
 const Dashboard = () => {
   return (
-    <div className="bg-gray-100 min-h-screen py-4 px-4 font-sans">
     
       <div className="max-w-6xl mx-auto">
         
@@ -46,7 +45,7 @@ const Dashboard = () => {
         
         
       </div>
-    </div>
+   
   );
 };
 

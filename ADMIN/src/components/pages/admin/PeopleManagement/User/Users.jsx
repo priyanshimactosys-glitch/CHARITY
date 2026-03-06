@@ -1,16 +1,19 @@
 import React, { useState, useMemo, useEffect } from "react";
 import {
   Search,
-  Edit2,
-  Trash2,
-  Eye,
-  ShieldCheck,
-  XCircle,
   MoreHorizontal,
-  X,
   Check,
 } from "lucide-react";
 import AddUser from "./AddUser";
+
+
+import AddUserIcon from "../../../../../assets/icons/adduser.png";
+import EditIcon from "../../../../../assets/icons/edit.png";
+import DeleteIcon from "../../../../../assets/icons/delete.png";
+import MoreIcon from "../../../../../assets/icons/more.png"; 
+import ViewProfileIcon from "../../../../../assets/icons/viewprofile.png"; 
+import PermissionRoleIcon from "../../../../../assets/icons/permissionrole.png";
+import DeactiveIcon from "../../../../../assets/icons/deactive.png";
 
 const Users = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -157,21 +160,25 @@ const Users = () => {
   };
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen font-sans">
-      <div className="max-w-[1200px] mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+    <div className="bg-gray-50 min-h-screen ">
+      <div className="max-w-[1200px] mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div className="relative">
             <h2 className="text-xl font-bold text-black">Users dashboard</h2>
-            <div className="absolute -bottom-1 left-0 w-10 h-0.5 bg-red-600"></div>
+            <div className="absolute -bottom-1 left-0 w-12 h-1 bg-red-600"></div>
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
             className="bg-[#E30613] text-white px-5 py-2 rounded-lg flex items-center gap-2 font-bold hover:bg-red-700 transition-colors"
           >
-            <div className="bg-white text-[#E30613] rounded-full w-5 h-5 flex items-center justify-center text-lg">
-              +
-            </div>
+            {/* <div className="bg-white text-[#E30613] rounded-full w-5 h-5 flex items-center justify-center text-lg"> */}
+            <img
+              src={AddUserIcon}
+              alt="add"
+              className="w-5 h-5 object-contain"
+            />
+            {/* </div> */}
             Add User
           </button>
         </div>
@@ -234,9 +241,9 @@ const Users = () => {
         </div>
 
         {/* Table */}
-        <div className="border border-gray-100 rounded-xl overflow-hidden shadow-sm">
+        <div className="bg-pink-100 border border-gray-100 rounded-xl overflow-hidden shadow-sm">
           <table className="w-full text-left">
-            <thead className="bg-[#F5F1F7] text-black text-[14px] font-bold">
+            <thead className="bg-pink-50 text-black text-[14px] font-bold">
               <tr>
                 <th className="px-6 py-4">Name</th>
                 <th className="px-6 py-4">Email</th>
@@ -365,17 +372,26 @@ const Users = () => {
                           ) : (
                             <button
                               onClick={() => handleEditClick(user)}
-                              className="text-[#F97316] p-1.5 border border-orange-100 rounded-lg bg-orange-50 hover:bg-orange-100"
+                              className="p-1.5 border border-orange-100 rounded-lg bg-orange-50 hover:bg-orange-100"
                             >
-                              <Edit2 size={16} />
+                              <img
+                                src={EditIcon}
+                                alt="edit"
+                                className="w-4 h-4"
+                              />
+                            
                             </button>
                           )}
-
                           <button
                             onClick={(e) => handleDelete(user.id, e)}
-                            className="text-[#EF4444] p-1.5 border border-red-100 rounded-lg bg-red-50 hover:bg-red-100"
+                            className="p-1.5 border border-red-100 rounded-lg bg-red-50 hover:bg-red-100"
                           >
-                            <Trash2 size={16} />
+                            <img
+                              src={DeleteIcon}
+                              alt="delete"
+                              className="w-4 h-4"
+                            />
+                          
                           </button>
 
                           <button
@@ -384,9 +400,14 @@ const Users = () => {
                                 openMenuId === user.id ? null : user.id,
                               )
                             }
-                            className="text-gray-400 p-1.5 hover:text-gray-600"
+                            className="p-1.5 hover:opacity-70 transition-opacity"
                           >
-                            <MoreHorizontal size={20} />
+                            <img
+                              src={MoreIcon}
+                              alt="more"
+                              className="w-5 h-5"
+                            />
+                            {/* MoreHorizontal replace kiya */}
                           </button>
                         </div>
 
@@ -395,28 +416,42 @@ const Users = () => {
                         {openMenuId === user.id && (
                           <div className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-xl z-50 py-2">
                             <button className="w-full px-4 py-2 text-left text-[13px] text-gray-600 hover:bg-gray-50 flex items-center gap-3">
-                              <Eye size={16} className="text-gray-400" /> View
-                              Profile
+                              <img
+                                src={ViewProfileIcon}
+                                alt="view"
+                                className="w-4 h-4"
+                              />
+                             
+                              View Profile
                             </button>
 
                             <button className="w-full px-4 py-2 text-left text-[13px] text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-t border-gray-100">
-                              <ShieldCheck
-                                size={16}
-                                className="text-gray-400"
+                              <img
+                                src={PermissionRoleIcon}
+                                alt="permission"
+                                className="w-4 h-4"
                               />
+                              
                               Permissions/Roles
                             </button>
 
                             <button className="w-full px-4 py-2 text-left text-[13px] text-red-500 hover:bg-red-50 flex items-center gap-3 border-t border-gray-100">
-                              <XCircle size={16} className="text-red-300" />
+                              <img
+                                src={DeactiveIcon}
+                                alt="deactivate"
+                                className="w-4 h-4"
+                              />
+                             
                               Deactivate
                             </button>
 
                             <button className="w-full px-4 py-2 text-left text-[13px] text-gray-600 hover:bg-gray-50 flex items-center gap-3 border-t border-gray-100">
-                              <MoreHorizontal
-                                size={16}
-                                className="text-gray-400"
+                              <img
+                                src={MoreIcon}
+                                alt="more"
+                                className="w-4 h-4"
                               />
+                             
                               More
                             </button>
                           </div>
