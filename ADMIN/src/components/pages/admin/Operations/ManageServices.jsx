@@ -96,7 +96,7 @@ export const ManageServices = () => {
               <th className="px-4 py-4">What to Bring</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-gray-50 bg-pink-100">
             {services.map((service) => (
               <tr key={service.id} className="hover:bg-gray-50 transition-colors">
                 <td className="px-4 py-4 text-[12px] text-gray-600 font-medium">{service.name}</td>

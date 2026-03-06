@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddUserIconImg from "../../../../../assets/icons/adduser.png";
 
 const PermissionRow = ({ label, sectionTitle, permissions, onToggle }) => (
   <div className="grid grid-cols-12 gap-4 py-3 border-b border-gray-100 items-center hover:bg-gray-50/50 px-4">
@@ -32,18 +33,24 @@ const PermissionSection = ({
         {title}
         <span className="absolute -bottom-1 left-0 w-8 h-1 bg-red-600 rounded-full"></span>
       </h4>
-      {showAddButton && (
-        <button
-          type="button"
-          onClick={() => alert("Add User Clicked!")}
-          className="bg-[#E30613] text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-md hover:bg-red-700 transition-all"
-        >
-          <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
-            <span className="text-[#E30613] text-lg leading-none">+</span>
-          </div>
-          Add User
-        </button>
-      )}
+    {showAddButton && (
+  <button
+    type="button"
+    onClick={() => alert("Add User Clicked!")}
+    className="bg-[#E30613] text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-md hover:bg-red-700 transition-all"
+  >
+     
+     
+    <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center overflow-hidden">
+      <img 
+        src={AddUserIconImg} 
+        alt="add" 
+        className="w-3.5 h-3.5 object-contain" 
+      />
+    </div>
+    Add User
+  </button>
+)}
     </div>
     <div className="grid grid-cols-12 gap-4 bg-[#F9F5FF] py-2.5 px-4 text-[13px] font-bold text-gray-800 border-b border-gray-100">
       <div className="col-span-4">{title}</div>
@@ -52,7 +59,7 @@ const PermissionSection = ({
       <div className="col-span-2 text-center">Edit</div>
       <div className="col-span-2 text-center">Delete</div>
     </div>
-    <div className="bg-white">
+    <div className="bg-pink-50">
       {items.map((item, idx) => (
         <PermissionRow
           key={idx}

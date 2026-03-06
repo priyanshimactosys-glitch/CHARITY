@@ -13,7 +13,12 @@ export const AdminLayout = () => {
   //  Audit 
   const getHeaderTitle = () => {
     const path = location.pathname;
+     // Volunteer Management 
+    if (path.includes('/admin/volunteers/availability')) return 'Availability';
+    if (path.includes('/admin/volunteers/schedules')) return 'Volunteer schedules';
+    if (path.includes('/admin/volunteers/approval')) return 'Hours approval';
     
+    if (path.includes('/admin/volunteers')) return "Volunteer Management"; 
     // Reports & Logs
     if (path.includes('/admin/reports/audit')) return "Audit Trail";
 
@@ -32,9 +37,13 @@ export const AdminLayout = () => {
 
     // People Management
     if (path.includes('/admin/people/careers')) return "Careers/Volunteers";
+    if (path.includes('/admin/volunteers')) return "Volunteer Management"; 
+
+    // Marketing & Engagement 
+    if (path.includes('/admin/marketing/coupons')) return "Coupons Management";
+    if (path.includes('/admin/marketing/donations')) return "Donations / Give settings";
 
     // Others
-    if (path.includes('/admin/volunteers')) return "Volunteer Management";
     if (path.includes('/admin/dashboard')) return "Admin Dashboard";
     
     return "Admin Dashboard";
@@ -61,10 +70,10 @@ export const AdminLayout = () => {
       {/* Sidebar - Desktop pe fix hai, mobile pe toggle hota hai */}
       <Sidebar isOpen={isOpen} toggleSidebar={() => setIsOpen(!isOpen)} />
       
-      <div className="flex-1 flex flex-col lg:ml-72 min-w-0 transition-all duration-300">
+      <div className="flex-1 flex flex-col lg:ml-[280px] min-w-0 transition-all duration-300">
         
         {/* Header Section */}
-        <header className="h-20 bg-white border-b flex items-center px-4 md:px-8 justify-between sticky top-0 z-40">
+       <header className="h-20 bg-white border-b flex items-center px-6 justify-between sticky top-0 z-40">
           <div className="flex items-center gap-4">
             <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-2xl p-2 text-gray-600">☰</button>
             <h1 className="text-lg md:text-[22px] font-bold text-[#1A202C] tracking-tight whitespace-nowrap">
@@ -72,10 +81,10 @@ export const AdminLayout = () => {
             </h1>
           </div>
 
-          <div className="flex items-center gap-3 md:gap-6"> 
-          
+<div className="flex items-center gap-3 md:gap-6"> 
+
             {/* Search Input - Hidden on very small screens */}
-            <div className="relative hidden sm:block">
+           <div className="relative hidden sm:block">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input 
                 type="text" 
@@ -87,7 +96,7 @@ export const AdminLayout = () => {
             </div>
 
             {/* Icons Group */}
-            <div className="flex items-center gap-2 md:gap-4">
+           <div className="flex items-center gap-2 md:gap-4">
               <button className="p-2.5 bg-white rounded-xl border border-gray-100 text-gray-400 hover:bg-gray-50 transition-colors relative shadow-sm">
                 <Bell className="w-5 h-5" />
                 <span className="absolute top-2.5 right-3 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
@@ -112,8 +121,8 @@ export const AdminLayout = () => {
         </header>
 
         {/* Main Content Area - Yahan Audit page render hoga */}
-        <main className="flex-1 p-4 md:p-8 overflow-x-hidden">
-          <div className="max-w-[1600px] mx-auto">
+      <main className="flex-1 p-6 overflow-x-hidden"> 
+          <div className="max-w-full mx-auto">
             <Outlet />
           </div>
         </main> 

@@ -99,9 +99,9 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   return ( 
     <> 
-   <aside className={`
+    <aside className={`
       fixed inset-y-0 left-0 z-50
-      w-72 bg-white border-r border-gray-100 
+      w-[280px] bg-white border-r border-gray-100 
       flex flex-col 
       h-screen
       transition-transform duration-300 
@@ -110,11 +110,12 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
     `}>
       
       {/* Logo Section */}
-      <div className="pt-10 pb-6 flex justify-center items-center">
+      <div className="pt-8 pb-4 flex justify-center items-center">
         <img src={logo} alt="Logo" style={{ width: '150px', height: 'auto', objectFit: 'contain' }} />
       </div>   
 
-      <nav className="flex-1 px-4 overflow-y-auto pt-6 pb-10 scrollbar-hide">
+      <nav className="flex-1 px-4 overflow-y-auto pt-2 pb-10 scrollbar-hide">
+        {/* space-y-2 ko barkarar rakha hai taaki main menu items mein gap rahe */}
         <div className="space-y-2">
           {menus.map((m) => (
             <div key={m.name}>
@@ -134,7 +135,6 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
                   }
                 `}
               > 
-
 
                 <div className="flex items-center gap-4">
                   <img 
@@ -157,22 +157,25 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
                 )}
               </NavLink> 
 
-              {/* Submenu rendering */}
+              {/* Submenu rendering - Yahan Maine Red Line aur Spacing add ki hai */}
               {m.hasDropdown && openDropdown === m.name && (
-                <div className="mt-2 ml-12 space-y-1 transition-all duration-300">
+                <div className="mt-2 ml-6 pl-4 border-l-2 border-gray-100 space-y-1 transition-all duration-300">
+                  {/* "border-l-2" se wo vertical line (red line effect) aayegi */}
                   {m.subMenus?.map((sub) => (
                     <NavLink
                       key={sub.name}
                       to={sub.path}
-                    onClick={(e) => {
+                      onClick={(e) => {
                         if (sub.name === 'Coupons management') {
                           e.preventDefault(); 
-                          setIsCouponOpen(true); // Ab ye chalega ✅
+                          setIsCouponOpen(true); 
                         }
                       }}
                       className={({ isActive }) => `
-                        block py-2 px-4 text-sm rounded-lg transition-all
-                        ${isActive ? 'text-[#D32F2F] font-bold bg-red-50' : 'text-gray-500 hover:text-gray-800'}
+                        block py-2.5 px-4 text-[13px] rounded-lg transition-all relative
+                        ${isActive 
+                          ? 'text-[#D32F2F] font-bold bg-red-50 before:absolute before:left-[-18px] before:top-1/2 before:-translate-y-1/2 before:w-1 before:h-6 before:bg-[#D32F2F] before:rounded-full' 
+                          : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'}
                       `}
                     >
                       {sub.name}
