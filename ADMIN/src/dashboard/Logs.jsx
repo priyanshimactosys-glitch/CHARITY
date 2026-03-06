@@ -1,6 +1,8 @@
 import React from 'react';
-import { IoCalendarOutline, IoChevronDown, IoChevronForward } from "react-icons/io5";
-import { FaRegHeart } from "react-icons/fa";
+import { IoChevronDown, IoChevronForward } from "react-icons/io5";
+import { LiaCalendarCheck } from "react-icons/lia";
+import vsearch from "../assets/vsearch.png";
+import handheart from "../assets/handheart.png";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 import logsData from '../data/logs.json';
 
@@ -8,10 +10,10 @@ const Logs = () => {
 
   const renderIcon = (iconName) => {
     switch (iconName) {
-      case 'Calendar': return <IoCalendarOutline size={22} />;
-      case 'Heart': return <FaRegHeart size={20} />;
-      case 'Audit': return <HiOutlineDocumentSearch size={22} />;
-      default: return <HiOutlineDocumentSearch size={22} />;
+      case 'Calendar': return <LiaCalendarCheck size={26} />;
+      case 'Heart': return <img src={handheart} alt="heart" className="gap-1 w-5 h-5" />;
+      case 'Audit': return <img src={vsearch} alt="audit" className="w-6 h-6" />;
+      default: return <img src={vsearch} alt="audit" className="gap-1 w-6 h-6" />;
     }
   };
 

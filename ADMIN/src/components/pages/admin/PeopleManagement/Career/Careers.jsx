@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import tableData from "./Cardata.json";
 
 import AddUserIconImg from "../../../../../assets/icons/adduser.png";
 import EditIconImg from "../../../../../assets/icons/edit.png";
 import DeleteIconImg from "../../../../../assets/icons/delete.png";
+import { PencilLine, Trash2, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
+import edit from "../../../../../assets/edit.png";
+import delet from "../../../../../assets/delet.png";
 
 const Careers = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50  font-sans">
       <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <div className="flex justify-between items-center mb-8">
           <div className="relative">
@@ -46,7 +48,7 @@ const Careers = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100 bg-[#FFF5F6]">
+            <tbody className="divide-y divide-gray-300 bg-[#FFF5F6]">
               {tableData.map((item) => (
                 <tr
                   key={item.id}
@@ -71,25 +73,11 @@ const Careers = () => {
                   </td>
                   <td className="p-4">
                     <div className="flex justify-center gap-3">
-                      {/* Edit Button */}
-                      <button className="flex items-center justify-center cursor-pointer p-1.5 border border-gray-100 rounded shadow-sm hover:bg-gray-50 transition-all">
-                        
-                        <img
-                          src={EditIconImg}
-                          alt="edit"
-                          style={{ width: "18px", height: "18px" }}
-                          className="object-contain"
-                        />
+                      <button className="text-[#FE7A36] hover:text-orange-600 cursor-pointer p-1 border border-gray-100 rounded shadow-sm">
+                        <img src={edit} alt="edit" className="w-5 h-5" />
                       </button>
-                      {/* Delete Button */}
-                      <button className="flex items-center justify-center cursor-pointer p-1.5 border border-gray-100 rounded shadow-sm hover:bg-gray-50 transition-all">
-                        
-                        <img
-                          src={DeleteIconImg}
-                          alt="delete"
-                          style={{ width: "18px", height: "18px" }}
-                          className="object-contain"
-                        />
+                      <button className="text-[#FF0000] hover:text-red-700 cursor-pointer p-1 border border-gray-100 rounded shadow-sm">
+                        <img src={delet} alt="delet" className="w-5 h-5" />
                       </button>
                     </div>
                   </td>
