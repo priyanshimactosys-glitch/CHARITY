@@ -1,0 +1,24 @@
+{
+  "topFields": [
+    { "id": "heading", "label": "Heading", "placeholder": "Contact Information" },
+    { "id": "phone", "label": "Phone Number", "placeholder": "(203) 555-1234" },
+    { "id": "email", "label": "Email Address", "placeholder": "info@vpetersinitiative.org" },
+    { "id": "address", "label": "Address", "placeholder": "459 Community Center Dr, Seattle, WA 98109" }
+  ],
+  "faqLink": { "id": "faq", "label": "FAQ page link", "placeholder": "/frequently-asked-questions" },
+  "description": { "id": "desc", "label": "Description", "placeholder": "Visit our FAQ page for answers to common questions" },
+  "hours": [
+    { "day": "Monday", "placeholder": "9:00 AM - 2:00 PM" },
+    { "day": "Tuesday", "placeholder": "9:00 AM - 5:00 PM" },
+    { "day": "Wednesday", "placeholder": "9:00 AM - 2:00 PM" },
+    { "day": "Thursday", "placeholder": "9:00 AM - 5:00 PM" },
+    { "day": "Friday", "placeholder": "9:00 AM - 2:00 PM" },
+    { "day": "Saturday", "placeholder": "9:00 AM - 5:00 PM" }
+  ],
+  "socialLinks": [
+    { "label": "Facebook link", "placeholder": "Add link" },
+    { "label": "Twitter Link", "placeholder": "Add link" },
+    { "label": "YouTube link", "placeholder": "Add link" },
+    { "label": "Link din Link", "placeholder": "Add link" }
+  ]
+}

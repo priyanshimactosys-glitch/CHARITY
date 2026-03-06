@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { PencilLine, Trash2, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 import tableData from './Cardata.json';
+import edit from "../../../../../assets/edit.png";
+import delet from "../../../../../assets/delet.png";
 
 const Careers = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-10 font-sans">
+    <div className="min-h-screen bg-gray-50  font-sans">
       <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         
         
@@ -40,7 +42,7 @@ const Careers = () => {
                 <th className="p-4 font-semibold text-gray-800 text-center">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100 bg-[#FFF5F6]">
+            <tbody className="divide-y divide-gray-300 bg-[#FFF5F6]">
               {tableData.map((item) => (
                 <tr key={item.id} className="hover:bg-gray-50 transition-colors">
                   <td className="p-4 text-gray-600">{item.company}</td>
@@ -60,11 +62,11 @@ const Careers = () => {
                   </td>
                   <td className="p-4">
                     <div className="flex justify-center gap-3">
-                      <button className="text-orange-400 hover:text-orange-600 cursor-pointer p-1 border border-gray-100 rounded shadow-sm">
-                        <PencilLine size={18} />
+                      <button className="text-[#FE7A36] hover:text-orange-600 cursor-pointer p-1 border border-gray-100 rounded shadow-sm">
+                        <img src={edit} alt="edit" className="w-5 h-5" />
                       </button>
-                      <button className="text-red-500 hover:text-red-700 cursor-pointer p-1 border border-gray-100 rounded shadow-sm">
-                        <Trash2 size={18} />
+                      <button className="text-[#FF0000] hover:text-red-700 cursor-pointer p-1 border border-gray-100 rounded shadow-sm">
+                        <img src={delet} alt="delet" className="w-5 h-5" />
                       </button>
                     </div>
                   </td>

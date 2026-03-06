@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaCalendarAlt } from "react-icons/fa";
+import { LiaCalendarCheck } from "react-icons/lia";
 import { IoIosArrowDown } from "react-icons/io";
 import data from "../data/Reports.json";
 
@@ -43,7 +43,7 @@ function ReportsLogs() {
           
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center space-x-2 text-gray-800 font-bold">
-              <FaCalendarAlt />
+              <LiaCalendarCheck size={22}/>
               <span>{segmentData.title}</span>
             </div>
             <IoIosArrowDown className="text-gray-800" />

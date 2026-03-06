@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import pageData from './pagedata.json'; 
-import { FaSearch, FaPlus, FaRegEdit, FaRegEye, FaChevronLeft, FaChevronRight, FaCheck } from 'react-icons/fa';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { MdOutlinePublish, MdOutlineUnpublished } from 'react-icons/md';
+import { FaSearch, FaPlus, FaRegEye, FaChevronLeft, FaChevronRight, FaCheck } from 'react-icons/fa';
+import { FiEdit2 } from "react-icons/fi";
+import { MonitorDown } from "lucide-react";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
+import edit from "../../../../../assets/edit.png";
+import delet from "../../../../../assets/delet.png";
 
 
 import CreatePage from './CreatePage'; 
@@ -22,7 +26,7 @@ const Page = () => {
   );
 
   return (
-    <div className="p-6 bg-[#f4f5f7] min-h-screen font-sans">
+    <div className="p-2 bg-[#f4f5f7] min-h-screen font-sans">
       
       
       <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-wrap items-center justify-between gap-2 mb-4">
@@ -81,12 +85,12 @@ const Page = () => {
                     <div className="flex justify-center items-center gap-4">
                       <button 
                         onClick={() => setActiveMenu(activeMenu === item.id ? null : item.id)}
-                        className="text-orange-400 hover:text-orange-500 cursor-pointer transition-transform hover:scale-110"
+                        className="text-[#FE7A36] hover:text-orange-500 cursor-pointer transition-transform hover:scale-110"
                       >
-                        <FaRegEdit size={22} />
+                        <img src={edit} alt="edit" className="w-5 h-5" />
                       </button>
-                      <button className="text-red-500 hover:text-red-600 cursor-pointer transition-transform hover:scale-110">
-                        <RiDeleteBin6Line size={22} />
+                      <button className="text-[#FF0000] hover:text-red-700 cursor-pointer transition-transform hover:scale-110">
+                         <img src={delet} alt="delet" className="w-5 h-5" />
                       </button>
                     </div>
 
@@ -96,19 +100,22 @@ const Page = () => {
                         <div className="fixed inset-0 z-10" onClick={() => setActiveMenu(null)}></div>
                         <div className="absolute right-14 top-14 w-52 bg-white border border-gray-200 rounded-lg shadow-2xl z-20 py-1 text-left">
                           <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
-                            <FaRegEdit size={14} className="text-gray-500" /> Edit
+                            <FiEdit2 size={16} className="text-gray-500" /> Edit
                           </button>
                           <div className="h-[1px] bg-gray-100 mx-2"></div>
                           <button className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
                             <div className="flex items-center gap-3"><FaRegEye size={14} className="text-gray-500" /> View</div>
-                            <FaCheck size={12} className="text-green-500" />
+                            <FaCheck size={16} className="text-green-500" />
                           </button>
                           <div className="h-[1px] bg-gray-100 mx-2"></div>
                           <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
-                            <MdOutlinePublish size={16} className="text-gray-500" /> Publish
+                            <MonitorDown size={18} className="text-gray-500" /> Publish
                           </button>
                           <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
-                            <MdOutlineUnpublished size={16} className="text-gray-500" /> Unpublished
+                            <AiOutlineEyeInvisible size={18} className="text-gray-500" /> Unpublished
+                          </button>
+                          <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-[14px] cursor-pointer">
+                            <HiOutlineDocumentDuplicate size={18} className="text-gray-500" /> Duplicate
                           </button>
                         </div>
                       </>

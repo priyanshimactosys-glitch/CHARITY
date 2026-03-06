@@ -49,7 +49,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
       subMenus: [
         { name: 'Pages', path: '/admin/content/pages' },
         { name: 'Page template', path: '/admin/content/template' },
-        { name: 'Announcements', path: '/admin/content/announcements' }
+        { name: 'Announcements', path: '/admin/content/announce' }
       ]
     },
     { 
@@ -167,7 +167,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
                     onClick={(e) => {
                         if (sub.name === 'Coupons management') {
                           e.preventDefault(); 
-                          setIsCouponOpen(true); // Ab ye chalega ✅
+                          setIsCouponOpen(true); 
                         }
                       }}
                       className={({ isActive }) => `

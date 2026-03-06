@@ -27,7 +27,7 @@ export const AdminLayout = () => {
     // Content Management 
     if (path.includes('/admin/content/pages')) return "Page";
     if (path.includes('/admin/content/template')) return "Page Template";
-    if (path.includes('/admin/content/announcements')) return "Announcements";
+    if (path.includes('/admin/content/announce')) return "Announcements";
 
 
     // People Management
@@ -36,7 +36,15 @@ export const AdminLayout = () => {
     // Others
     if (path.includes('/admin/volunteers')) return "Volunteer Management";
     if (path.includes('/admin/dashboard')) return "Admin Dashboard";
-    
+
+    // System Settings 
+    if (path.includes('/admin/settings/org-info')) return "Orgnization info";
+    if (path.includes('/admin/settings/contact-info')) return "Contact info";
+    if (path.includes('/admin/settings/branding')) return "Logo & branding";
+    if (path.includes('/admin/settings/footer')) return "Footer content";
+    if (path.includes('/admin/settings/roles')) return "Roles & permissions";
+
+
     return "Admin Dashboard";
   };
 
