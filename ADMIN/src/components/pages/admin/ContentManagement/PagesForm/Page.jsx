@@ -17,7 +17,6 @@ import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
 
 
-
 import CreatePage from './CreatePage'; 
 
 const Page = () => {
