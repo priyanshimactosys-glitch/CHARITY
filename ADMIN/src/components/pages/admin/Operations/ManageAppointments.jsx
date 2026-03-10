@@ -13,22 +13,22 @@ import {
 } from "lucide-react";
 import EditIcon from "../../../../assets/icons/edit.png";
 import DeleteIcon from "../../../../assets/icons/delete.png";
-
+ 
 export const ManageAppointments = () => {
   const [activeTab, setActiveTab] = useState("Upcoming (7)");
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
-
+ 
   const navigate = useNavigate();
-
+ 
   // Search Logic from URL
   const [searchParams] = useSearchParams();
   const globalSearchQuery = searchParams.get("q") || ""; // AdminLayout wala search term
-
+ 
   // States for Functionality
   const [showManageDropdown, setShowManageDropdown] = useState(false);
   const dropdownRef = useRef(null);
-
+ 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -39,13 +39,13 @@ export const ManageAppointments = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
+ 
   // API Logic
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-
+ 
         // API Simulation
         setTimeout(() => {
           setAppointments([
@@ -79,32 +79,32 @@ export const ManageAppointments = () => {
     };
     fetchData();
   }, [activeTab]);
-
+ 
   //  Search Filter Logic
   const filteredAppointments = appointments.filter(
     (item) =>
       item.name.toLowerCase().includes(globalSearchQuery.toLowerCase()) ||
       item.service.toLowerCase().includes(globalSearchQuery.toLowerCase()),
   );
-
+ 
   //  Handlers
   const handleEdit = (id) => alert(`Editing Appointment ID: ${id}`);
-
+ 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this appointment?")) {
       setAppointments(appointments.filter((item) => item.id !== id));
     }
   };
-
+ 
   // Click par naye page par bhejne ke liye
   const handleNewAppointment = () => {
     navigate("/admin/operations/appointments/new");
   };
-
+ 
   const handleWalkIn = () => {
     navigate("/admin/operations/appointments/walk-in");
   };
-
+ 
   return (
     <div className="bg-white min-h-screen">
       {/* TOP CARD */}
@@ -113,7 +113,7 @@ export const ManageAppointments = () => {
           <p className="text-gray-500 font-medium">
             Manage and track scheduled appointments and walk-in visits below.
           </p>
-
+ 
           <div className="flex gap-3 mt-4 md:mt-0">
             <button
               onClick={handleNewAppointment}
@@ -121,7 +121,7 @@ export const ManageAppointments = () => {
             >
               <Plus size={18} strokeWidth={3} /> New Appointments
             </button>
-
+ 
             <button
               onClick={handleWalkIn}
               className="bg-red-800 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-bold text-sm shadow-sm active:scale-95 transition-all"
@@ -130,7 +130,7 @@ export const ManageAppointments = () => {
             </button>
           </div>
         </div>
-
+ 
         <div className="flex flex-wrap gap-4">
           <select className="border border-gray-200 rounded-xl px-4 py-3 bg-white text-gray-400 text-sm min-w-[140px] outline-none">
             <option>View All</option>
@@ -151,7 +151,7 @@ export const ManageAppointments = () => {
           </button>
         </div>
       </div>
-
+ 
       {/* MAIN TABLE CARD */}
       <div style={{ width: '1061px', minHeight: '392px', opacity: 1 }}
        className="bg-white rounded-[24px] shadow-sm border border-gray-100 overflow-hidden">
@@ -171,7 +171,7 @@ export const ManageAppointments = () => {
             </button>
           ))}
         </div>
-
+ 
         {/* Search Row & Manage Services */}
         <div className="p-6 flex gap-3 items-center">
           <div className="relative flex-1">
@@ -181,11 +181,11 @@ export const ManageAppointments = () => {
               className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-gray-300"
             />
           </div>
-
+ 
           <button className="border border-gray-200 px-8 py-3 rounded-lg text-sm font-bold flex items-center gap-2 text-gray-500 bg-white hover:bg-gray-50 transition-all">
             <Search size={18} className="text-gray-400" /> Search
           </button>
-
+ 
           {/* MANAGE SERVICES POPUP */}
           <div className="relative" ref={dropdownRef}>
             <button
@@ -194,7 +194,7 @@ export const ManageAppointments = () => {
             >
               Manage Services
             </button>
-
+ 
             {showManageDropdown && (
               <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-100 shadow-xl rounded-xl z-50 overflow-hidden py-1 animate-in fade-in zoom-in duration-200">
                 <button
@@ -227,7 +227,7 @@ export const ManageAppointments = () => {
             )}
           </div>
         </div>
-
+ 
         {/* Table Area */}
         <div className="overflow-x-auto min-h-[250px] relative">
           {loading ? (
@@ -245,7 +245,7 @@ export const ManageAppointments = () => {
                   <th className="px-10 py-5 text-center">Action</th>
                 </tr>
               </thead>
-
+ 
               <tbody className="divide-y divide-gray-50 bg-[#FFF9FA]">
                 {filteredAppointments.map((item) => (
                   <tr
@@ -284,7 +284,7 @@ export const ManageAppointments = () => {
                             className="w-5 h-5 object-contain"
                           />
                         </button>
-
+ 
                         <button
                           onClick={() => handleDelete(item.id)}
                           className="hover:scale-110 transition-all active:scale-90"
@@ -313,7 +313,7 @@ export const ManageAppointments = () => {
             </table>
           )}
         </div>
-
+ 
         {/* Pagination */}
         <div className="py-6 flex justify-center items-center gap-2 border-t border-gray-100 bg-white">
           <button className="p-2 text-gray-300 hover:text-gray-500">
@@ -336,3 +336,5 @@ export const ManageAppointments = () => {
     </div>
   );
 };
+ 
+
