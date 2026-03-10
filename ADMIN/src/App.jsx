@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AdminLayout } from "./components/layout/AdminLayout";
 
 import Dashboard from "./dashboard/Dashboard";
+import Login from "./Login"; 
 
 // Operations imports
 import { ManageServices } from "./components/pages/admin/Operations/ManageServices";
@@ -39,24 +40,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+        {/*  Login page*/}
+        <Route path="/" element={<Login />} />
 
+        {/* Admin Section  */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
+          
           {/* Operations routes */}
           <Route path="operations/services" element={<ManageServices />} />
-          <Route
-            path="operations/appointments"
-            element={<ManageAppointments />}
-          />
-          <Route
-            path="operations/appointments/new"
-            element={<NewAppointment />}
-          />
-          <Route
-            path="operations/appointments/walk-in"
-            element={<AddWalkIn />}
-          />
+          <Route path="operations/appointments" element={<ManageAppointments />} />
+          <Route path="operations/appointments/new" element={<NewAppointment />} />
+          <Route path="operations/appointments/walk-in" element={<AddWalkIn />} />
           <Route path="operations/calendar" element={<CalendarView />} />
 
           {/* Content Management routes */}
@@ -64,32 +59,21 @@ function App() {
           <Route path="content/template" element={<Template />} /> 
           <Route path="content/announce" element={<Announce />} /> 
 
-
-          {/* People Managment routes */}
+          {/* People Management routes */}
           <Route path="people/careers" element={<Careers />} />
           <Route path="people/users" element={<Users />} />
 
-          {/* Report & Logs routes   */}
-          {/* <Route path="reports/audit" element={<Audit />} /> */}
-          {/* people management  */} 
-
-          <Route path="people/users" element={<Users />} />
           {/* Marketing Section Routes */}
-          <Route path="/admin/marketing/coupons" element={<Coupons />} />
-          <Route path="/admin/marketing/donations" element={<Donations />} />
+          <Route path="marketing/coupons" element={<Coupons />} />
+          <Route path="marketing/donations" element={<Donations />} />
 
-          {/* Volunteer Management  */}
-
-          <Route
-            path="/admin/volunteers/availability"
-            element={<Availability />}
-          />
-          <Route
-            path="/admin/volunteers/schedules"
-            element={<VolunteerSchedules />}
-          />
-         <Route path="volunteers/approval" element={<HoursApproval />} />
-          <Route path="reports/audit" element={<Audit />} />{" "}
+          {/* Volunteer Management */}
+          <Route path="volunteers/availability" element={<Availability />} />
+          <Route path="volunteers/schedules" element={<VolunteerSchedules />} />
+          <Route path="volunteers/approval" element={<HoursApproval />} />
+          
+          {/* Reports & Logs */}
+          <Route path="reports/audit" element={<Audit />} />
 
           {/* System Settings Routes */}
           <Route path="settings/org-info" element={<OrganizationInfo />} />
@@ -97,8 +81,10 @@ function App() {
           <Route path="settings/branding" element={<LogoBranding />} />
           <Route path="settings/footer" element={<FooterContent />} />
           <Route path="settings/roles" element={<RolesPermissions />} />
-
         </Route>
+
+        {/* wrong path add to login pr redirect*/}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
