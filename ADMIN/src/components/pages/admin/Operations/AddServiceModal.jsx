@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { X, Plus, Trash2, UploadCloud, ChevronRight } from 'lucide-react';
-import addNewIcon from "../../../../assets/icons/AddNew1.jpg"; 
-
-export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) => { 
-
+import addNewIcon from "../../../../assets/icons/AddNew1.jpg";
+ 
+export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) => {
+ 
   // States for functionality
   const [formData, setFormData] = useState({
     serviceName: '',
@@ -18,41 +18,41 @@ export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) =>
     internalRef: '',
     confirmationMsg: "Appointment confirmed! Here's a reminder of what to bring and how to prepare."
   });
-
+ 
   const [checklist, setChecklist] = useState([
     'Use fingerprint form provided',
     'Valid photo ID',
     'Bring payment'
   ]);
-
+ 
   if (!isOpen) return null;
-
+ 
   // --- Handlers ---
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
+ 
   const addItem = () => {
     const val = prompt("Enter checklist item:");
     if (val) setChecklist([...checklist, val]);
   };
-
+ 
   const removeItem = (index) => {
     setChecklist(checklist.filter((_, i) => i !== index));
   };
-
+ 
   const triggerUpload = (label) => {
     alert(`${label} upload window opened`);
     const input = document.createElement('input');
     input.type = 'file';
     input.click();
   };
-
+ 
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center bg-black/20 backdrop-blur-[1px] p-4 overflow-y-auto">
       <div className="bg-white rounded-2xl w-full max-w-5xl shadow-2xl relative flex flex-col my-8 h-auto overflow-visible">
-        
+       
         {/* Header */}
         <div className="flex justify-between items-center p-5 border-b bg-white rounded-t-2xl">
           <h2 className="text-xl font-bold text-gray-800">Add Service</h2>
@@ -60,23 +60,23 @@ export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) =>
             <X size={20} />
           </button>
         </div>
-
+ 
         {/* Tabs */}
         <div className="flex border-b text-[13px] font-bold text-gray-400 bg-white">
           {['Main Setting', 'Advanced Settings', 'What to Bring'].map((tab) => (
-            <button 
-              key={tab} 
-              onClick={() => setActiveTab(tab)} 
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
               className={`flex-1 py-4 uppercase border-b-2 transition-all ${activeTab === tab ? 'border-[#D32F2F] text-[#D32F2F]' : 'border-transparent'}`}
             >
               {tab}
             </button>
           ))}
         </div>
-
+ 
         {/* Body Content */}
         <div className="p-8 h-auto overflow-visible">
-          
+         
           {/* MAIN SETTING TAB */}
           {activeTab === 'Main Setting' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
@@ -133,7 +133,7 @@ export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) =>
               </div>
             </div>
           )}
-
+ 
           {/* ADVANCED SETTINGS TAB */}
           {activeTab === 'Advanced Settings' && (
             <div className="space-y-6 max-w-4xl mx-auto text-left">
@@ -188,7 +188,7 @@ export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) =>
               </div>
             </div>
           )}
-
+ 
           {/* WHAT TO BRING TAB */}
           {activeTab === 'What to Bring' && (
             <div className="space-y-6 text-left">
@@ -205,7 +205,7 @@ export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) =>
                 <div className="flex justify-end pt-2"><button onClick={addItem} className="bg-gray-100 px-4 py-1.5 rounded-lg text-[10px] font-black uppercase flex items-center gap-1"><Plus size={14}/> Add Items</button></div>
               </div>
               <p className="text-[10px] text-gray-400 font-medium">These Checklist items will be listed for the client during Step 2 of the booking process</p>
-              
+             
               <div className="space-y-4 pt-4">
                 <div>
                   <label className="block text-[10px] font-extrabold mb-1.5 uppercase text-gray-700">Checklist PDF Upload (optional)</label>
@@ -221,7 +221,7 @@ export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) =>
             </div>
           )}
         </div>
-
+ 
         {/* Footer Buttons */}
         <div className="p-6 border-t flex gap-4 bg-white rounded-b-2xl sticky bottom-0">
           <button onClick={onClose} className="flex-1 py-3 bg-[#0061AF] text-white font-bold rounded-lg text-sm uppercase shadow-md active:scale-95 transition-all">Cancel</button>
@@ -231,3 +231,4 @@ export const AddServiceModal = ({ isOpen, onClose, activeTab, setActiveTab }) =>
     </div>
   );
 };
+ 
